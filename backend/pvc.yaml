@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: jenkins-pv-claim
+  name: backend-pv-claim
   namespace: default
 spec:
   storageClassName: manual

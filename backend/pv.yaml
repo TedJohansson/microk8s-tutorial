@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: jenkins-pv-volume
+  name: backend-pv-volume
   namespace: default
   labels:
     type: local
@@ -12,5 +12,5 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/jenkins"
+    path: "/mnt/backend"
 
