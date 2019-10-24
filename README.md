@@ -8,7 +8,9 @@ sudo usermod -aG docker ${USER}
 
 reboot
 
-microk8s.enable helm dns
+microk8s.kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
+
+microk8s.enable helm dns ingress
 
 watch microk8s.kubectl get pods -A
 
@@ -19,6 +21,8 @@ microk8s.helm init --service-account tiller --override spec.selector.matchLabels
 microk8s.helm init --client-only
 
 microk8s.helm repo update
+
+microk8s.helm install --name nginx stable/nginx-ingress
 
 cd backend
 
