@@ -36,8 +36,6 @@ microk8s.kubectl apply -f pv.yaml
 
 microk8s.kubectl apply -f pvc.yaml
 
-microk8s.kubectl apply -f secret.yaml
-
 cd charts
 
 microk8s.helm install --name backend backend
@@ -49,8 +47,6 @@ cd ../../frontend
 docker build . -t tedjohansson/microk8s-tutorial-frontend:latest
 
 docker push tedjohansson/microk8s-tutorial-frontend
-
-microk8s.kubectl apply -f secret.yaml
 
 cd charts
 
