@@ -3,3 +3,4 @@ Flask-Cors==3.0.8
 Flask-RESTful==0.3.7
 gunicorn==19.9.0
 mongoengine==0.18.2
+statsd==3.3.0

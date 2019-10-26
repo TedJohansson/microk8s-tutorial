@@ -53,3 +53,10 @@ cd charts
 microk8s.helm install --name frontend frontend
 
 watch microk8s.kubectl get pods
+
+## Monitoring
+microk8s.helm install stable/graphite --name graphite --set persistence.enabled=false
+
+microk8s.helm install stable/grafana --name grafana
+
+

@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: tedjohansson/microk8s-tutorial-backend
-  tag: latest
+  tag: dev
   pullPolicy: Always
 
 imagePullSecrets: []
