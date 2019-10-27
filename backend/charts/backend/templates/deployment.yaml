@@ -49,19 +49,6 @@ spec:
                 secretKeyRef:
                   name: backend
                   key: word
-        - name: {{ .Chart.Name }}-mongodb
-          image: mongo:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - name: mongodb
-              containerPort: 27017
-          volumeMounts:
-            - name: data
-              mountPath: /data/db
-      volumes:
-      - name: data
-        persistentVolumeClaim:
-          claimName: backend-pv-claim
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

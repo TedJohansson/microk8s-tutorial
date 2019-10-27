@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-mongodb
+  labels:
+{{ include "backend.labels" . | indent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Chart.Name }}-mongodb
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Chart.Name }}-mongodb
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-mongodb
+          image: mongo:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: mongodb
+              containerPort: 27017
+          volumeMounts:
+            - name: data
+              mountPath: /data/db
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: backend-pv-claim
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

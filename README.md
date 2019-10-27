@@ -10,7 +10,7 @@ reboot
 
 microk8s.kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
 
-microk8s.enable helm dns ingress
+microk8s.enable helm dns ingress metrics-server
 
 watch microk8s.kubectl get pods -A
 

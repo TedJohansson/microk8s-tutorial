@@ -1,1 +1,1 @@
-mongodb://localhost:27017
+mongodb://backend-mongodb:27017
