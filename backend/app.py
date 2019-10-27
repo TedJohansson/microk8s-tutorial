@@ -1,6 +1,7 @@
 import contextlib
 import json
 import logging
+import os
 import socket
 
 import statsd
@@ -84,7 +85,7 @@ class Todos(Resource):
             todo_entries = TodoEntry.objects
 
             log_statsd('list')
-            return json.loads(f'{{ "todos": {todo_entries.to_json()}}}')
+            return json.loads(f'{{ "todos": {todo_entries.to_json()}, "pod": "{os.getenv("POD_NAME")}"}}')
 
 api.add_resource(Todo, '/todo')
 api.add_resource(Todos, '/todos')

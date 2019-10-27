@@ -6,7 +6,8 @@ class Todos extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      todos: []
+      todos: [],
+      pod: null
     };
   }
 
@@ -55,18 +56,22 @@ class Todos extends React.Component {
     .then(json => {
         this.setState({
             isLoaded: true,
-            todos: json.todos
+            todos: json.todos,
+	    pod: json.pod
         });
     });
   }
 
   render() {
-    const { error, isLoaded, todos } = this.state;
+    const { error, isLoaded, todos, pod } = this.state;
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-	<ul className="list-group">{this.getTodos()}</ul>
+	<ul className="list-group">
+	  <li class="list-group-item bg-success text-white"><h3>Pod: {pod}</h3></li>
+	  {this.getTodos()}
+	</ul>
       );
     }
   }

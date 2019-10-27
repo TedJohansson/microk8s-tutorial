@@ -81,9 +81,9 @@ class CreateTodo extends React.Component {
           <form className="pt-2" onSubmit={this.handleSubmit}>
 	    <div className="row">
               <div className="col-md-9">
-                  <input type="text" className="form-control input-lg" name="activity" id="activity" value={this.state.activity} onChange={this.handleChange} placeholder="Enter Activity"></input>
+                  <input type="text" className="form-control input-lg" name="activity" id="activity" value={this.state.activity} onChange={this.handleChange} placeholder="Enter Activity" autoFocus></input>
               </div>
-              <input type="submit" value="Submit" className="btn btn-primary col-md-2" autofocus/>
+              <input type="submit" value="Submit" className="btn btn-primary col-md-2"/>
             </div>
           </form>
           <small id="passwordHelp" className="text-danger">
