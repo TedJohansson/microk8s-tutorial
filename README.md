@@ -22,8 +22,6 @@ microk8s.helm init --client-only
 
 microk8s.helm repo update
 
-microk8s.helm install --name nginx stable/nginx-ingress
-
 cd backend
 
 docker build . -t tedjohansson/microk8s-tutorial-backend:latest
